@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function generateTask(taskName) {
+
     const taskWrapper = document.querySelector('.tasks');
     const task = document.createElement('div');
     task.classList.add('new-task');
@@ -34,12 +35,15 @@ function generateTask(taskName) {
 
     const img = document.createElement('img');
     img.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYI_27-lSo8Z4auY7awG1LHELDPeyiANbDnY59FbLY-K2U4jDe0C45zUp63EPDzH1buKc&usqp=CAU');
+    
+    button.addEventListener('click', () => {
+        let itemIdx = Object.values(taskWrapper.children).indexOf(task);
+        taskWrapper.removeChild(taskWrapper.children[itemIdx])
+    });
+
     button.appendChild(img);
-
     task.appendChild(button);
-
     taskWrapper.appendChild(task);
+
 }
-function deleteTask(task){
-    removeEventListener(task)
-}
+
